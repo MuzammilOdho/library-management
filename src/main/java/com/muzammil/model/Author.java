@@ -3,6 +3,7 @@ package com.muzammil.model;
 import jakarta.persistence.*;
 import org.hibernate.boot.model.naming.Identifier;
 
+import java.util.ArrayList;
 import java.util.List;
 @Entity
 public class Author {
@@ -11,7 +12,7 @@ public class Author {
     private int id;
     private String name;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Book> books;
+    private List<Book> books = new ArrayList<Book>();
 
     public Author() {
     }

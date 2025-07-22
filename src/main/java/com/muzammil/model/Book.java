@@ -1,19 +1,25 @@
 package com.muzammil.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
 
     @ManyToOne
     @JoinColumn(name = "auth_id")
     private Author author;
+
+    public Book() {
+    }
+
+    public Book(String title, Author author) {
+        this.title = title;
+        this.author = author;
+    }
 
     public int getId() {
         return id;
